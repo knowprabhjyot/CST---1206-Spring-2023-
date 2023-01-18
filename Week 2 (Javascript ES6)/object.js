@@ -11,10 +11,10 @@ let student = {
     },
     courses: ["CST-1206", "CST-1204"],
     speaks: function() {
-        console.log("Hi!");
+        console.log(this.name); // Mike
     },
     getName: () => {
-        console.log(this.name);
+        console.log(this.name); // Yoyo
     },
 }
 
