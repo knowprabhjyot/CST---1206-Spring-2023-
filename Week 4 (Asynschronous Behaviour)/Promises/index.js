@@ -71,6 +71,88 @@ evenPromise.then(function(response) {
 })
 
 
+// If you are resolving and rejecting at the same time then the preference is given to resolve
+
+let num = 4;
+let newPromise = new Promise(function(resolve, reject) {
+    resolve(num);
+    reject(num);
+})
+
+
+newPromise.then(function(response) {
+    console.log(response); // this will be executed
+}) .catch(function(error) {
+    console.log(error);
+})
+
+
+
+// PROMISE CHAINING ********************
+
+
+let num2 = 4;
+let newPromise1 = new Promise(function(resolve, reject) {
+    resolve(num2);
+});
+
+
+newPromise1.then(function(response) {
+    console.log(response, "First");
+
+    return response * 4;
+    
+}).then(function(response) {
+    console.log(response, "Second");
+
+    return response - 100;
+}).then(function(response3) {
+    console.log(response3);
+})
+.catch(function(error) {
+    console.log(error);
+})
+
+
+
+
+// ************************************************************************
+// ASYNC AWAIT, another way to wait for the promise
+// ************************************************************************
+
+
+// evenPromise
+
+async function checkEvenNumbers() {
+   
+// FIRST WAY ******************
+// evenPromise.then(function(response) {
+//     console.log(response); // This will execute if the promise was fulfilled
+// }).catch(function(error) {
+//     console.log(error); // This willm execute if the promise was rejected
+// })
+
+// SECOND WAY ***********************
+
+let response  = await evenPromise;
+
+return response;
+ 
+}
+let finalResponse;
+
+try {
+    finalResponse = await checkEvenNumbers(); // This will be like then block
+} catch (error) {
+    console.log(error, "hey there was an error instead!"); // this will be catch block
+}
+
+console.log(finalResponse); 
+
+
+
+
+
 // SIDE NOTE WHAT ARE CLASSES OR CONSTRUCTORS, lets understand using example
 
 class Car {
