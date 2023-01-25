@@ -99,3 +99,34 @@ let timer2 = setInterval(() => {
 setTimeout(function() {
     clearInterval(timer2);
 }, 5000); // This will stop the interval after 5 seconds.
+
+
+
+
+
+// ************************************************************************
+// CALLBACK 
+// ************************************************************************
+
+
+// A callback is a function that is first passed as a parameter to another function, and then called later!
+
+function greeting(func) {
+    // setTimeout(func, 2000);
+    
+    setTimeout(function() {
+        func();
+    }, 2000);
+}
+
+
+// greeting(function() {
+//     console.log('Say Hi ');
+// });
+
+
+function callMeInsideGreeting() {
+    console.log('Say Hi ');
+}
+
+greeting(callMeInsideGreeting);
