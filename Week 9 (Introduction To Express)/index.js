@@ -82,6 +82,45 @@ app.delete('/students/delete/:id', (req, res) => {
 
 // DELETE API ENDS **************************************************************
 
+// PUT API STARTS **************************************************************
+
+app.put('/students/update/:id', (req, res) => {
+    const studentID = req.params.id;
+    const updatedStudentData = req.body;
+
+    studentList = studentList.map((data) => {
+        if (data.id == studentID) {
+            data = updatedStudentData;
+        }
+        return data;
+    })
+
+    res.send(studentList);
+
+})
+
+// PUT API ENDS **************************************************************
+
+// GET API FOR GETTING INDIVIDUAL STUDENT STARTS **************************************************************
+
+app.get('/students/:id', (req, res) => {
+    const studentID = req.params.id;
+
+    let foundStudent = studentList.find((student) => {
+        if (student.id == studentID) {
+            return student;
+        }
+    })
+
+    // What if the student ID was wrong
+    if (foundStudent) {
+        res.send(foundStudent);
+    } else {
+        res.send("Student doesn't exist");
+    }
+})
+
+// GET API FOR GETTING INDIVIDUAL STUDENT ENDS **************************************************************
 
 
 // Listening to server on this PORT - 3000
