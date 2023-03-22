@@ -1,6 +1,8 @@
 const UserModel = require('../models/user');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
+//  APPLICATION
 
 const registerUser = async (request, response) => {
     const newUser = request.body;
@@ -37,8 +39,15 @@ const loginUser = async (request, response) => {
 
         if (matchPassword) {
             // let the user login
+
+            const accessToken = jwt.sign({
+                email: foundUser.email,
+                name: foundUser.name
+            }, process.env.SECRETKEY)
+
             return response.status(200).json({
-                message: "Succesfully Logged in"
+                message: "Succesfully Logged in",
+                token: accessToken
             })
         } else {
             // Return the password is incorrect
@@ -73,15 +82,15 @@ const getAllUsers = async (request, response) => {
 }
 
 const getUserById = () => {
-
+    // ASsignment
 }
 
 const updateUser = () => {
-
+// ASsignment
 }
 
 const deleteUser = () => {
-
+// ASsignment
 }
 
 module.exports = {
@@ -93,3 +102,6 @@ module.exports = {
     deleteUser
 }
 
+// Json Web Tokens
+// UI
+// Middlewares
