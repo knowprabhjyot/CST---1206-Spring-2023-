@@ -8,6 +8,8 @@ const userRoutes = require('./routes/user');
 
 app.use(morgan('dev'));
 
+app.use(express.json());
+
 mongoose.connect(process.env.MONGODB_URL).then((response) => {
     console.log(`Database Connected`);
 }).catch((error) => {

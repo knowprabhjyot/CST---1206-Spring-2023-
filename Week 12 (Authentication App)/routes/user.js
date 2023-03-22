@@ -3,7 +3,7 @@ const router = express.Router();
 const UserController = require('../controllers/user');
 
 // Login API
-router.post('/', UserController.loginUser)
+router.post('/login', UserController.loginUser)
 
 
 // SIGNUP API
@@ -11,15 +11,15 @@ router.post('/', UserController.registerUser)
 
 
 // DELETE USER
-router.delete('/', UserController.deleteUser)
+// router.delete('/', UserController.deleteUser)
 
 
 // UPDATE USER
-router.put('/', UserController.updateUser)
+// router.put('/', UserController.updateUser)
 
 
 // GET USER BY ID
-router.get('/', UserController.getUserById)
+// router.get('/', UserController.getUserById)
 
 
 // GET ALL USERS
